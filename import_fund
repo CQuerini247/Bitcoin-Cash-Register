@@ -1,0 +1,13 @@
+import { FundCard } from "@coinbase/onchainkit/fund"
+
+function FundDemo() {
+  return (
+    <FundCard
+      assetSymbol="ETH"
+      country="US"
+      currency="USD"
+      presetAmountInputs={['10', '20', '100']}
+    />
+  )
+}
+  
