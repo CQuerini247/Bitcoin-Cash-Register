@@ -1,0 +1,33 @@
+# Load JSON data from a file
+with open("data.json", "r") as file:
+    data = json.load(file)
+print(data)
+import json
+Source code
+The .py file contains Python source code written by the developer.
+# Example JSON string
+json_string = '{"name": "Alice", "age": 25, "city": "New York"}'
+
+# Parse JSON string to Python dictionary
+data = json.loads(json_string)
+print(data["name"])  # Output: Alice
+# Python dictionary
+data = {"name": "Alice", "age": 25, "city": "New York"}
+Compilation
+The source code is compiled into bytecode (.pyc files) by the interpreter.
+
+# Convert Python dictionary to JSON string
+json_string = json.dumps(data, indent=4)
+print(json_string)
+
+# Save JSON to a file
+with open("data.json", "w") as file:
+    json.dump(data, file, indent=4)
+Execution
+The Python Virtual Machine (PVM) reads the bytecode and executes it.
+Runs on the Java Virtual Machine (JVM).
+Runs on the .NET framework.
+The default implementation, written in C.
+A faster implementation with Just-In-Time (JIT) compilation.
+Interpreted
+Python code is not compiled to machine code directly but to bytecode.
