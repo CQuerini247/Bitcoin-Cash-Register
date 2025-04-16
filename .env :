@@ -88,3 +88,13 @@ import yfinance as yf
 stock = yf.Ticker("AAPL")
 historical_data = stock.history(period="6mo")  # Options: 1d, 5d, 1mo, 6mo, 1y, 5y, max
 print(historical_data)
+
+import yfinance as yf
+
+# Get stock information
+stock = yf.Ticker("AAPL")
+print(stock.info)
+
+# Get historical data
+data = stock.history(period="1mo")
+print(data)
