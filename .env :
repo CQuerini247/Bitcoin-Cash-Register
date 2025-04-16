@@ -14,6 +14,30 @@ import yfinance as yf
 data = yf.download(["AAPL", "MSFT", "GOOG"], start="2023-01-01", end="2023-12-31")
 print(data)
 
+import requests
+
+# Your RapidAPI key
+rapidapi_key = "YOUR_RAPIDAPI_KEY"
+
+# Define the API endpoint and headers
+url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete"
+headers = {
+    "X-RapidAPI-Key": rapidapi_key,
+    "X-RapidAPI-Host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+}
+
+# Query parameters
+querystring = {"q": "apple", "region": "US"}
+
+# Make the API request
+response = requests.get(url, headers=headers, params=querystring)
+
+# Check response status and print data
+if response.status_code == 200:
+    data = response.json()
+    print(data)
+else:
+    print(f"Error: {response.status_code}, {response.text}")
 
 import requests
 
