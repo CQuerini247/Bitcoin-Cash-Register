@@ -13,3 +13,14 @@ data = yf.download(["AAPL", "MSFT", "GOOG"], start="2023-01-01", end="2023-12-31
 print(data)
 
 
+import requests
+
+url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary"
+querystring = {"symbol": "AAPL", "region": "US"}
+headers = {
+    "X-RapidAPI-Key": "YOUR_RAPIDAPI_KEY",
+    "X-RapidAPI-Host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+}
+response = requests.get(url, headers=headers, params=querystring)
+print(response.json())
+
