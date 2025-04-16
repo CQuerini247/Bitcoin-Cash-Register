@@ -81,3 +81,10 @@ while True:
         print(msg)
     if event.eventType() == blpapi.Event.RESPONSE:
         break
+
+import yfinance as yf
+
+# Fetch historical data for Apple (AAPL)
+stock = yf.Ticker("AAPL")
+historical_data = stock.history(period="6mo")  # Options: 1d, 5d, 1mo, 6mo, 1y, 5y, max
+print(historical_data)
