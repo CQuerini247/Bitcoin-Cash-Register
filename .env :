@@ -41,3 +41,43 @@ start = datetime(2023, 1, 1)
 end = datetime(2023, 4, 1)
 data = pdr.get_data_yahoo("AAPL", start=start, end=end)
 print(data)
+
+import blpapi
+
+# Initialize the Bloomberg session
+SESSION_HOST = "localhost"
+SESSION_PORT = 8194
+
+# Start a session
+session = blpapi.SessionOptions()
+session.setServerHost(SESSION_HOST)
+session.setServerPort(SESSION_PORT)
+session = blpapi.Session(session)
+
+if not session.start():
+    print("Failed to start session.")
+    exit()
+
+if not session.openService("//blp/refdata"):
+    print("Failed to open service.")
+    exit()
+
+# Reference data service
+refDataSvc = session.getService("//blp/refdata")
+request = refDataSvc.createRequest("ReferenceDataRequest")
+
+# Add securities and fields
+request.getElement("securities").appendValue("AAPL US Equity")
+request.getElement("fields").appendValue("PX_LAST")  # Last price
+request.getElement("fields").appendValue("PX_VOLUME")  # Volume
+
+# Send the request
+session.sendRequest(request)
+
+# Process the response
+while True:
+    event = session.nextEvent()
+    for msg in event:
+        print(msg)
+    if event.eventType() == blpapi.Event.RESPONSE:
+        break
