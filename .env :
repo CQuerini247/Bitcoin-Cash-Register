@@ -5,3 +5,11 @@ ASTRO_PUBLIC_ONCHAINKIT_API_KEY
 NEXT_PUBLIC_ONCHAINKIT_API_KEY
 VERSECHARGEHANDLE
 NEXT_PUBLIC_COINBASE_COMMERCE_API_KEY
+
+import yfinance as yf
+
+# Download data for multiple stocks
+data = yf.download(["AAPL", "MSFT", "GOOG"], start="2023-01-01", end="2023-12-31")
+print(data)
+
+
