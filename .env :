@@ -24,3 +24,12 @@ headers = {
 response = requests.get(url, headers=headers, params=querystring)
 print(response.json())
 
+
+import yfinance as yf
+
+# Get dividend and split history
+stock = yf.Ticker("AAPL")
+dividends = stock.dividends
+splits = stock.splits
+print("Dividends:\n", dividends)
+print("Splits:\n", splits)
