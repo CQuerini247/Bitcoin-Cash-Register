@@ -33,3 +33,11 @@ dividends = stock.dividends
 splits = stock.splits
 print("Dividends:\n", dividends)
 print("Splits:\n", splits)
+
+import pandas_datareader as pdr
+from datetime import datetime
+
+start = datetime(2023, 1, 1)
+end = datetime(2023, 4, 1)
+data = pdr.get_data_yahoo("AAPL", start=start, end=end)
+print(data)
