@@ -98,3 +98,5 @@ print(stock.info)
 # Get historical data
 data = stock.history(period="1mo")
 print(data)
+
+pip install yfinance
