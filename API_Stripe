@@ -1,0 +1,17 @@
+# Example with SQLAlchemy
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+engine = create_engine('sqlite:///example.db')
+Session = sessionmaker(bind=engine)
+session = Session()
+
+try:
+    # Perform some database operations
+    session.add(some_data)
+    session.commit()  # Commit the transaction
+except Exception as e:
+    session.rollback()  # Rollback in case of error
+    print("Transaction failed:", e)
+finally:
+    session.close()
